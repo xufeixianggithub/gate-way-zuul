@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: gate-way-zuul
+server:
+  port: 6060
+eureka:
+  client:
+    serviceUrl:
+      defaultZone:  http://localhost:9001/eureka/
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+zuul:
+  routes:
+    micro-service: /TestZuul/**
+#Ribbon
+#micro-service:
+  #ribbon:
+    #listOfServers: http://locahost:8002
+#
+#zuul.ignored-services= spring-cloud-api-client
